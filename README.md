@@ -1,4 +1,4 @@
-# WhatsApp Go
+# WhatsApp Go ![Go](https://github.com/giansalex/whatsapp-go/workflows/Go/badge.svg)
 Whatsapp Bot to send and reply text messages.
 
 ![WhatsApp Icon](https://cdn.icon-icons.com/icons2/373/PNG/96/Whatsapp_37229.png)
@@ -19,9 +19,7 @@ dep ensure -add github.com/giansalex/whatsapp-go
 ```go
 package main
 
-import (
-	"github.com/giansalex/whatsapp-go/cl"
-)
+import "github.com/giansalex/whatsapp-go/cl"
 
 func main() {
 	client := cl.NewClient()
