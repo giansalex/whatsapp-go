@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/giansalex/whatsapp-api/cl"
+	"github.com/giansalex/whatsapp-go/cl"
 )
 
 func main() {
