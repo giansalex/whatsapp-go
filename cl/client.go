@@ -52,7 +52,7 @@ func (wp *WhatsappClient) Listen(f messageListener) {
 	os.Exit(0)
 }
 
-// SendText message
+// SendText send text message
 func (wp *WhatsappClient) SendText(to string, text string) {
 	reply := whatsapp.TextMessage{
 		Info: whatsapp.MessageInfo{
@@ -67,6 +67,11 @@ func (wp *WhatsappClient) SendText(to string, text string) {
 	} else {
 		fmt.Println("Message Sent -> ID : " + msgID)
 	}
+}
+
+// GetConnection return whatsapp connection
+func (wp *WhatsappClient) GetConnection() *whatsapp.Conn {
+	return wp.wac
 }
 
 func login(wac *whatsapp.Conn) error {
