@@ -11,6 +11,9 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./src/github.com/giansalex/whatsapp-go
     env:
       GOPATH: ${{ github.workspace }}
     steps:
@@ -23,11 +26,8 @@ jobs:
 
     - name: Check out code into the Go module directory
       uses: actions/checkout@v2
-      with:
-        path: src/github.com/giansalex/whatsapp-go
 
     - name: Get dependencies
-      working-directory: ./src/github.com/giansalex/whatsapp-go
       run: |
         mkdir -p $GOPATH/bin
         if [ -f Gopkg.toml ]; then
@@ -35,5 +35,4 @@ jobs:
             $GOPATH/bin/dep ensure
         fi
     - name: Build
-      working-directory: ./src/github.com/giansalex/whatsapp-go
       run: go build -v .
