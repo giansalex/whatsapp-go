@@ -23,6 +23,7 @@ func (h *messageHandler) HandleTextMessage(message whatsapp.TextMessage) {
 	}
 
 	mapMessage := Message{
+		ID:   message.Info.Id,
 		From: message.Info.RemoteJid,
 		Text: message.Text,
 	}
