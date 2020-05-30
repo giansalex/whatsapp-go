@@ -1,6 +1,10 @@
 package cl
 
-import "time"
+import (
+	"time"
+
+	"github.com/Rhymen/go-whatsapp"
+)
 
 // Message content body whatsapp text message
 type Message struct {
@@ -11,4 +15,6 @@ type Message struct {
 	Text string
 
 	Time time.Time
+
+	Source whatsapp.TextMessage
 }

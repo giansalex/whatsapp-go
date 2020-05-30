@@ -3,6 +3,7 @@ package cl
 import (
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/Rhymen/go-whatsapp"
 )
@@ -10,7 +11,8 @@ import (
 type messageListener func(Message)
 
 type messageHandler struct {
-	listener messageListener
+	listener  messageListener
+	afterTime int64
 }
 
 func (h *messageHandler) HandleError(err error) {
@@ -22,10 +24,18 @@ func (h *messageHandler) HandleTextMessage(message whatsapp.TextMessage) {
 		return
 	}
 
+	msgTime := int64(message.Info.Timestamp)
+
+	if h.afterTime > msgTime {
+		return
+	}
+
 	mapMessage := Message{
-		ID:   message.Info.Id,
-		From: message.Info.RemoteJid,
-		Text: message.Text,
+		ID:     message.Info.Id,
+		From:   message.Info.RemoteJid,
+		Text:   message.Text,
+		Time:   time.Unix(int64(message.Info.Timestamp), 0),
+		Source: message,
 	}
 
 	h.listener(mapMessage)
