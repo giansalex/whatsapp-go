@@ -40,7 +40,7 @@ func NewClient() *WhatsappClient {
 
 // Listen text messages
 func (wp *WhatsappClient) Listen(f messageListener) {
-	wp.wac.AddHandler(&messageHandler{f})
+	wp.wac.AddHandler(&messageHandler{f, time.Now().Unix()})
 
 	sigs := make(chan os.Signal, 1)
 	signal.Notify(sigs, os.Interrupt)
