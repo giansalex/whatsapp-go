@@ -9,11 +9,6 @@ Whatsapp Bot to send and reply text messages.
 go get github.com/giansalex/whatsapp-go
 ```
 
-With [dep](https://golang.github.io/dep/)   
-```
-dep ensure -add github.com/giansalex/whatsapp-go
-```
-
 ## Usage
 
 ```go
